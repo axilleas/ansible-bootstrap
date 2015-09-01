@@ -5,7 +5,7 @@ Some basic stuff to bootstrap a standalone ansible repo.
 ## Prerequisites
 
 1. [Ansible][]
-1. A configured gpg key to use with ansible-vault
+1. At least one gpg key to use with ansible-vault
 
 ## File list
 
@@ -20,7 +20,7 @@ Some basic stuff to bootstrap a standalone ansible repo.
 ### Vault password
 
 Using the method described in [Eric Call's blog post][vault-gpg], generate a
-strong password to use with `[ansible-vault][]` in order to encrypt
+strong password to use with [ansible-vault][] in order to encrypt
 `secrets.yml` and everything else needed. This will be stored in a gpg
 encrypted file:
 
