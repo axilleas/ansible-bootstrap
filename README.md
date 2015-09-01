@@ -41,6 +41,34 @@ Finally, add `vault-passwd.gpg` in git control.
 **Note:** [`open_the_vault.sh`](/bin/open_the_vault.sh) needs to be
     executable.
 
+### secrets.yml
+
+Place here any role variables. A convention to know when a variable is secret,
+is to define it in uppercase. For example:
+
+```
+MARIADB_DB_PASSWD: "OzO=Qeg*IJQ"
+```
+
+Then in `roles/mariadb/vars/main.yml` define the database password like:
+
+```
+db_passwd: "{{ MARIADB_DB_PASSWD }}"
+```
+
+which then can be called in your tasks.
+
+The `secrets.yml` is always loaded in the general playbook `deploy.yml`.
+
+Finally, encrypt `secrets.yml` with `ansible-vault`:
+
+```
+ansible-vault encrypt secrets.yml
+```
+
+which will encrypt the file with the password defined in the previous section.
+When prompted, enter your gpg password.
+
 [Ansible]: https://ansible.com/
 [ansible-vault]: https://docs.ansible.com/ansible/playbooks_vault.html
 [vault-gpg]: https://blog.erincall.com/p/using-pgp-to-encrypt-the-ansible-vault
