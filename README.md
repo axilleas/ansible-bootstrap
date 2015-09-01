@@ -56,13 +56,13 @@ Finally, add `vault-passwd.gpg` in git control.
 Place here any role variables. A convention to know when a variable is secret,
 is to define it in uppercase. For example:
 
-```
+```yaml
 MARIADB_DB_PASSWD: "OzO=Qeg*IJQ"
 ```
 
 Then in `roles/mariadb/vars/main.yml` define the database password like:
 
-```
+```yaml
 db_passwd: "{{ MARIADB_DB_PASSWD }}"
 ```
 
